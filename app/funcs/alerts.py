@@ -5,6 +5,11 @@ from dotenv import load_dotenv
 from alerts_in_ua import AsyncClient as AsyncAlertsClient
 from app.funcs import read_alerts_data
 
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
+
+print(CURRENT_DIR, APP_DIR)
+
 MAP = os.path.join(APP_DIR, "images", "map.png")
 UKRAINE = os.path.join(APP_DIR, "images", "UK2.png")
 CITIES = os.path.join(APP_DIR, "images", "cities")
