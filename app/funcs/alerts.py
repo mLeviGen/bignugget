@@ -10,9 +10,9 @@ APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
 
 print(CURRENT_DIR, APP_DIR)
 
-MAP = os.path.join(APP_DIR, "images", "map.png")
-UKRAINE = os.path.join(APP_DIR, "images", "UK2.png")
-CITIES = os.path.join(APP_DIR, "images", "cities")
+MAP = os.path.join(APP_DIR, "app", "images", "map.png")
+UKRAINE = os.path.join(APP_DIR, "app", "images", "UK2.png")
+CITIES = os.path.join(APP_DIR, "app", "images", "cities")
 
 print(MAP, UKRAINE, CITIES)
 
