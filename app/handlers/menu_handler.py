@@ -8,12 +8,9 @@ from app.funcs import get_username
 
 router = Router()
 
-# Текущая директория: .../app/handlers
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-# Поднимаемся на 2 уровня выше: .../app
 APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
 
-# Формируем путь к файлу: .../app/images/menus/nugget.png
 image_main_path = os.path.join(APP_DIR, "app", "images", "menus", "nugget.png")
 print(CURRENT_DIR, APP_DIR, image_main_path)
 
@@ -24,12 +21,10 @@ except Exception as e:
     raise
 
 def get_image_main():
-    # Каждый раз открываем файл заново
     return FSInputFile(image_main_path)
 
 image_main = FSInputFile(file_obj, filename=os.path.basename(image_main_path))
 
-# Для отладки: выводим пути и проверяем существование файла
 logging.debug(f"[main_menu_handler] CURRENT_DIR = {CURRENT_DIR}")
 logging.debug(f"[main_menu_handler] APP_DIR = {APP_DIR}")
 logging.debug(f"[main_menu_handler] Путь к изображению: {image_main_path}")
