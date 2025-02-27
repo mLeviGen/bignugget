@@ -3,15 +3,15 @@ import os
 from dotenv import load_dotenv
 from app.settings.config import bot
 
-# Определяем базовую директорию относительно этого файла
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Абсолютные пути к файлам настроек
 SETTINGS_FILE = os.path.join(BASE_DIR, "app", "settings", "config.json")
 ALERTS_DATA_FILE = os.path.join(BASE_DIR, "app", "settings", "alerts_data.json")
 
 load_dotenv()
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+logging.debug(f"BASE_DIR: {BASE_DIR}")
 
 
 async def get_username(user_id):

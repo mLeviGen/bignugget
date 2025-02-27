@@ -12,6 +12,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 image_main_path = os.path.join(BASE_DIR, "app", "images", "menus", "nugget.png")
 image_main = FSInputFile(image_main_path)
+logging.debug(f"Путь к изображению: {image_main_path}")
 
 def set_keyboard(user_id):
     return InlineKeyboardMarkup(
