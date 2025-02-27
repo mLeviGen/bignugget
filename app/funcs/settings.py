@@ -1,5 +1,6 @@
 import json
 import os
+import logging
 from dotenv import load_dotenv
 from app.settings.config import bot
 
