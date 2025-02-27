@@ -5,7 +5,9 @@ from app.handlers.alerts_event import update_alerts_data
 from app.funcs import ensure_settings_file
 from app.settings.config import bot, dp
 
-logging.basicConfig(level=logging.DEBUG)
+
+logging.basicConfig(    level=logging.DEBUG,  # Вывод подробных логов
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 
 async def main():
