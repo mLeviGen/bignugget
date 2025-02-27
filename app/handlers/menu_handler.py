@@ -12,7 +12,6 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
 
 image_main_path = os.path.join(APP_DIR, "app", "images", "menus", "nugget.png")
-print(CURRENT_DIR, APP_DIR, image_main_path)
 
 try:
     file_obj = open(image_main_path, "rb")

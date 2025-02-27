@@ -8,13 +8,9 @@ from app.funcs import read_alerts_data
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
 
-print(CURRENT_DIR, APP_DIR)
-
 MAP = os.path.join(APP_DIR, "app", "images", "map.png")
 UKRAINE = os.path.join(APP_DIR, "app", "images", "UK2.png")
 CITIES = os.path.join(APP_DIR, "app", "images", "cities")
-
-print(MAP, UKRAINE, CITIES)
 
 load_dotenv()
 TOKEN = os.getenv("ALERTS_IN_UA_TOKEN")
@@ -93,7 +89,7 @@ async def generate_map_image():
 
         base_image = Image.open(UKRAINE).convert("RGBA")
         size = base_image.size
-        mask_image = create_mask(active_ids, size)
+        mask_image = create_mask(active_ids, size) 
         overlay = Image.new("RGBA", size, (235, 76, 66))
         base_image.paste(overlay, (0, 0), mask_image)
         final_image = Image.new("RGBA", (size[0] + 100, size[1] + 100), (49, 51, 64))

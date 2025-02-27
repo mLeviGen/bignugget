@@ -8,7 +8,7 @@ router = Router()
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
-MAP = os.path.join(APP_DIR, "images", "map.png")
+MAP = os.path.join(APP_DIR, "app", "images", "map.png")
 
 def get_map_image():
     return FSInputFile(MAP)

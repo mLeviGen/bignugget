@@ -1,5 +1,5 @@
 {
-    "timestamp": "2025-02-27T15:56:50.751228+00:00",
+    "timestamp": "2025-02-27T16:40:40.822853+00:00",
     "alerts": [
         {
             "id": 8757,
@@ -137,21 +137,6 @@
             "calculated": null
         },
         {
-            "id": 107918,
-            "location_title": "Червоногригорівська територіальна громада",
-            "location_type": "hromada",
-            "started_at": "2025-02-26T22:08:12+02:00",
-            "finished_at": null,
-            "updated_at": "2025-02-26T22:08:15.443000+02:00",
-            "alert_type": "artillery_shelling",
-            "location_uid": "356",
-            "location_oblast": "Дніпропетровська область",
-            "location_oblast_uid": 356,
-            "location_raion": "Нікопольський район",
-            "notes": null,
-            "calculated": null
-        },
-        {
             "id": 107964,
             "location_title": "Покровська територіальна громада",
             "location_type": "hromada",
@@ -163,36 +148,6 @@
             "location_oblast": "Дніпропетровська область",
             "location_oblast_uid": 353,
             "location_raion": "Нікопольський район",
-            "notes": null,
-            "calculated": null
-        },
-        {
-            "id": 107977,
-            "location_title": "м. Кривий Ріг",
-            "location_type": "city",
-            "started_at": "2025-02-27T16:22:14+02:00",
-            "finished_at": null,
-            "updated_at": "2025-02-27T16:22:19.473000+02:00",
-            "alert_type": "air_raid",
-            "location_uid": "5279",
-            "location_oblast": "Дніпропетровська область",
-            "location_oblast_uid": 279,
-            "location_raion": null,
-            "notes": null,
-            "calculated": null
-        },
-        {
-            "id": 107978,
-            "location_title": "Криворізька територіальна громада",
-            "location_type": "hromada",
-            "started_at": "2025-02-27T16:22:14+02:00",
-            "finished_at": null,
-            "updated_at": "2025-02-27T16:22:19.479000+02:00",
-            "alert_type": "air_raid",
-            "location_uid": "279",
-            "location_oblast": "Дніпропетровська область",
-            "location_oblast_uid": 279,
-            "location_raion": "Криворізький район",
             "notes": null,
             "calculated": null
         }
