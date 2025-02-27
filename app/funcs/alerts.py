@@ -5,18 +5,18 @@ from dotenv import load_dotenv
 from alerts_in_ua import AsyncClient as AsyncAlertsClient
 from app.funcs import read_alerts_data
 
-MAP = "app/images/map.png"
-UKRAINE = "app/images/UK2.png"
-CITIES = "app/images/cities/"
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+APP_DIR = os.path.dirname(CURRENT_DIR)
+
+MAP = os.path.join(APP_DIR, "images", "map.png")
+UKRAINE = os.path.join(APP_DIR, "images", "UK2.png")
+CITIES = os.path.join(APP_DIR, "images", "cities")
 
 load_dotenv()
 TOKEN = os.getenv("ALERTS_IN_UA_TOKEN")
-
 logger = logging.getLogger(__name__)
 
-
 async def get_alerts():
-    """Отримання даних про тривоги з оф. АПІ."""
     try:
         alerts_client = AsyncAlertsClient(TOKEN)
         active_alerts = await alerts_client.get_active_alerts()
@@ -26,25 +26,17 @@ async def get_alerts():
         logger.error(f"Помилка отримання тривог: {e}")
         raise
 
-
 async def generate_map_image():
-    """Генерація карти тривог"""
     try:
         logger.debug("Начало генерации карты")
 
         def filter_oblasts(alerts):
-            return [
-                alert["location_title"]
-                for alert in alerts
-                if alert.get("location_type") == "oblast"
-            ]
+            return [alert["location_title"] for alert in alerts if alert.get("location_type") == "oblast"]
 
         alerts_data = read_alerts_data()
         if not isinstance(alerts_data, list):
             logger.error("Невірний формат: очікувався список.")
-            raise ValueError(
-                "Невірний формат: очікувався список. \n(generate_map_image -> if not isinstance(alerts_data, list))"
-            )
+            raise ValueError("Невірний формат: очікувався список.")
 
         active_oblasts = filter_oblasts(alerts_data)
         logger.debug(f"Знайдені області з тривогою: {active_oblasts}")
@@ -102,10 +94,8 @@ async def generate_map_image():
         base_image.paste(overlay, (0, 0), mask_image)
         final_image = Image.new("RGBA", (size[0] + 100, size[1] + 100), (49, 51, 64))
         final_image.paste(base_image, (50, 50))
-
         final_image.save(MAP)
         logger.debug("Карта збережена успішно!")
-
     except Exception as e:
         logger.error(f"Помилка в generate_map_image: {e}")
         raise

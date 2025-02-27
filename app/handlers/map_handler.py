@@ -3,11 +3,12 @@ import logging
 from aiogram import types, Router, Bot
 from aiogram.types import FSInputFile, InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
 from app.funcs import generate_map_image, get_username
-from app.settings.config import CAPTION, BAD_ANSWER, MAP  # предполагается, что MAP – это путь к файлу карты
+from app.settings.config import CAPTION, BAD_ANSWER, MAP  
 router = Router()
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
+MAP = os.path.join(APP_DIR, "images", "map.png")
 
 def get_map_image():
     return FSInputFile(MAP)
