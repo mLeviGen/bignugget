@@ -3,9 +3,12 @@ import os
 from dotenv import load_dotenv
 from app.settings.config import bot
 
+# Определяем базовую директорию относительно этого файла
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-SETTINGS_FILE = "app/settings/config.json"
-ALERTS_DATA_FILE = "app/settings/alerts_data.json"
+# Абсолютные пути к файлам настроек
+SETTINGS_FILE = os.path.join(BASE_DIR, "app", "settings", "config.json")
+ALERTS_DATA_FILE = os.path.join(BASE_DIR, "app", "settings", "alerts_data.json")
 
 load_dotenv()
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -23,20 +26,22 @@ async def get_username(user_id):
 
 
 def ensure_file_exists(file_path, default_content):
-    """Перевіряє, чи є файл, напомвнює дефолтними значеннями."""
+    """Проверяет, существует ли файл, и если нет – создает его с дефолтными значениями."""
+    # Создаем родительскую директорию, если она отсутствует
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
     if not os.path.exists(file_path):
         with open(file_path, "w", encoding="utf-8") as file:
             json.dump(default_content, file, ensure_ascii=False, indent=4)
 
 
 def ensure_settings_file():
-    """Створює файл з дефолтними значеннями."""
+    """Создает файл настроек с дефолтными значениями, если он отсутствует."""
     default_settings = {"alert_text": "Тревога!", "calm_text": "Відбій!"}
     ensure_file_exists(SETTINGS_FILE, default_settings)
 
 
 def read_alerts_data():
-    """Зчитування файлу з інформацією про тривоги."""
+    """Считывает данные о тревогах из файла."""
     if not os.path.exists(ALERTS_DATA_FILE):
         return []
 
