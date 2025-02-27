@@ -1,17 +1,27 @@
-from aiogram import types, Router
-from aiogram.types import (
-    FSInputFile,
-    InputMediaPhoto,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-)
-from app.funcs import read_alerts_data, get_username
-from app.settings.config import *
+import os
 import logging
+from aiogram import types, Router
+from aiogram.types import FSInputFile, InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
+from app.funcs import read_alerts_data, get_username
+from app.settings.config import CAPTION, BAD_ANSWER
 
 router = Router()
-image_alerts = FSInputFile("app/images/menus/nugget_alerts.png")
 
+# Текущая директория: .../app/handlers
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Поднимаемся на 2 уровня выше: .../app
+APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
+
+
+
+# Путь к изображению: .../app/images/menus/nugget_alerts.png
+image_alerts_path = os.path.join(APP_DIR, "images", "menus", "nugget_alerts.png")
+logging.debug(f"[alerts_handler] CURRENT_DIR = {CURRENT_DIR}")
+logging.debug(f"[alerts_handler] APP_DIR = {APP_DIR}")
+logging.debug(f"[alerts_handler] Путь к изображению: {image_alerts_path}")
+logging.debug(f"[alerts_handler] Файл существует? {os.path.exists(image_alerts_path)}")
+
+image_alerts = FSInputFile(image_alerts_path)
 
 @router.callback_query(lambda c: c.data.startswith("check_alert_"))
 async def handle_check_alert(callback_query: types.CallbackQuery):

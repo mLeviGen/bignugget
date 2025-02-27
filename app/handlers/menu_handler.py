@@ -8,11 +8,33 @@ from app.funcs import get_username
 
 router = Router()
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Текущая директория: .../app/handlers
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Поднимаемся на 2 уровня выше: .../app
+APP_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
 
-image_main_path = os.path.join(BASE_DIR, "app", "images", "menus", "nugget.png")
-image_main = FSInputFile(image_main_path)
-logging.debug(f"Путь к изображению: {image_main_path}")
+# Формируем путь к файлу: .../app/images/menus/nugget.png
+image_main_path = os.path.join(APP_DIR, "app", "images", "menus", "nugget.png")
+print(CURRENT_DIR, APP_DIR, image_main_path)
+
+try:
+    file_obj = open(image_main_path, "rb")
+except Exception as e:
+    logging.error(f"Ошибка открытия файла: {e}")
+    raise
+
+def get_image_main():
+    # Каждый раз открываем файл заново
+    return FSInputFile(image_main_path)
+
+image_main = FSInputFile(file_obj, filename=os.path.basename(image_main_path))
+
+# Для отладки: выводим пути и проверяем существование файла
+logging.debug(f"[main_menu_handler] CURRENT_DIR = {CURRENT_DIR}")
+logging.debug(f"[main_menu_handler] APP_DIR = {APP_DIR}")
+logging.debug(f"[main_menu_handler] Путь к изображению: {image_main_path}")
+logging.debug(f"[main_menu_handler] Файл существует? {os.path.exists(image_main_path)}")
+
 
 def set_keyboard(user_id):
     return InlineKeyboardMarkup(
@@ -27,12 +49,13 @@ async def show_main_menu(bot: Bot, chat_id: int, user_id: int):
     try:
         await bot.send_photo(
             chat_id,
-            image_main,
+            get_image_main(),
             caption=CAPTION.format(username),
             reply_markup=set_keyboard(user_id),
         )
     except Exception as e:
         logging.error(f"Помилка відправлення головного меню: {e}")
+
 
 @router.message(Command(commands=["menu"]))
 async def show_menu(message: types.Message, bot: Bot):
@@ -53,7 +76,7 @@ async def handle_back_to_menu(callback_query: types.CallbackQuery, bot: Bot):
 
     try:
         media = InputMediaPhoto(
-            media=image_main,
+            media=get_image_main(),
             caption=CAPTION.format(username),
         )
         await bot.edit_message_media(
@@ -66,3 +89,4 @@ async def handle_back_to_menu(callback_query: types.CallbackQuery, bot: Bot):
     except Exception as e:
         logging.error(f"Помилка відправлення головного меню: {e}")
         await callback_query.answer("Помилка відправлення головного меню.")
+

@@ -1,5 +1,5 @@
 {
-    "timestamp": "2025-02-27T15:56:50.751228+00:00",
+    "timestamp": "2025-02-27T15:38:37.576394+00:00",
     "alerts": [
         {
             "id": 8757,
@@ -152,6 +152,21 @@
             "calculated": null
         },
         {
+            "id": 107962,
+            "location_title": "Донецька область",
+            "location_type": "oblast",
+            "started_at": "2025-02-27T14:56:43+02:00",
+            "finished_at": null,
+            "updated_at": "2025-02-27T14:56:45.218000+02:00",
+            "alert_type": "air_raid",
+            "location_uid": "28",
+            "location_oblast": "Донецька область",
+            "location_oblast_uid": 28,
+            "location_raion": null,
+            "notes": null,
+            "calculated": null
+        },
+        {
             "id": 107964,
             "location_title": "Покровська територіальна громада",
             "location_type": "hromada",
@@ -193,6 +208,81 @@
             "location_oblast": "Дніпропетровська область",
             "location_oblast_uid": 279,
             "location_raion": "Криворізький район",
+            "notes": null,
+            "calculated": null
+        },
+        {
+            "id": 107979,
+            "location_title": "Дніпропетровська область",
+            "location_type": "oblast",
+            "started_at": "2025-02-27T16:23:09+02:00",
+            "finished_at": null,
+            "updated_at": "2025-02-27T16:23:15.146000+02:00",
+            "alert_type": "air_raid",
+            "location_uid": "9",
+            "location_oblast": "Дніпропетровська область",
+            "location_oblast_uid": 9,
+            "location_raion": null,
+            "notes": null,
+            "calculated": null
+        },
+        {
+            "id": 107980,
+            "location_title": "м. Дніпро",
+            "location_type": "city",
+            "started_at": "2025-02-27T16:24:16+02:00",
+            "finished_at": null,
+            "updated_at": "2025-02-27T16:24:19.558000+02:00",
+            "alert_type": "air_raid",
+            "location_uid": "5332",
+            "location_oblast": "Дніпропетровська область",
+            "location_oblast_uid": 332,
+            "location_raion": null,
+            "notes": null,
+            "calculated": null
+        },
+        {
+            "id": 107981,
+            "location_title": "Дніпровська територіальна громада",
+            "location_type": "hromada",
+            "started_at": "2025-02-27T16:24:16+02:00",
+            "finished_at": null,
+            "updated_at": "2025-02-27T16:24:19.563000+02:00",
+            "alert_type": "air_raid",
+            "location_uid": "332",
+            "location_oblast": "Дніпропетровська область",
+            "location_oblast_uid": 332,
+            "location_raion": "Дніпровський район",
+            "notes": null,
+            "calculated": null
+        },
+        {
+            "id": 107982,
+            "location_title": "Харківська область",
+            "location_type": "oblast",
+            "started_at": "2025-02-27T16:27:43+02:00",
+            "finished_at": null,
+            "updated_at": "2025-02-27T16:27:45.286000+02:00",
+            "alert_type": "air_raid",
+            "location_uid": "22",
+            "location_oblast": "Харківська область",
+            "location_oblast_uid": 22,
+            "location_raion": null,
+            "notes": null,
+            "calculated": null
+        },
+        {
+            "id": 107985,
+            "location_title": "Запорізька область",
+            "location_type": "oblast",
+            "started_at": "2025-02-27T17:01:17+02:00",
+            "finished_at": null,
+            "updated_at": "2025-02-27T17:01:22.848000+02:00",
+            "alert_type": "air_raid",
+            "location_uid": "12",
+            "location_oblast": "Запорізька область",
+            "location_oblast_uid": 12,
+            "location_raion": null,
             "notes": null,
             "calculated": null
         }
