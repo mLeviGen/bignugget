@@ -1,65 +1,67 @@
 # bignugget
 
-**Телеграм-бот для оповіщення (поки немає) про тривоги та генерації карти активних областей України**
+**Telegram bot for (future) alert notifications and generating a map of active alarm regions in Ukraine**
 
 ---
 
-## Опис
+## Description
 
-`bignugget` — легкий Telegram-бот на Python, який:
-- Періодично запитує API тривог в Україні та зберігає їх у локальному JSON (`alerts_data.json`)
-- Генерує кольорову карту України з підсвіткою областей, де оголошено тривогу
-- Надсилає користувачу меню з двома діями:  
-  1. 🗺️ Показати актуальну мапу тривог  
-  2. 🚨 Перевірити поточний список тривог у текстовому вигляді  
-- Працює на базі **aiogram** та **Pillow**
+`bignugget` is a lightweight Telegram bot written in Python that:
+- Periodically queries a Ukrainian alarms API and saves the data to a local JSON file (`alerts_data.json`)
+- Generates a color-coded map of Ukraine, highlighting regions where an alarm is active
+- Presents the user with a menu offering two actions:  
+  1. 🗺️ Show the current alarm map  
+  2. 🚨 Retrieve the current list of alarms in text form  
+- Built using **aiogram** and **Pillow**
 
-## Вимоги
+## Requirements
 
-- Python 3.12 або вище  
-- Бібліотеки: aiogram, Pillow, python-dotenv, alerts-in-ua
+- Python 3.12 or higher  
+- Libraries: `aiogram`, `Pillow`, `python-dotenv`, `alerts-in-ua`
 
 ---
 
-## Швидкий старт
+## Quick Start
 
-1. **Клонування репозиторію**  
+0. **Create token in [BotFather](t.me/BotFather) and [Alerts in ua](https://devs.alerts.in.ua/)**
+1. **Clone the repository**  
    ```bash
    git clone https://github.com/mLeviGen/bignugget.git
    cd bignugget
    ```
-
-2. **Створіть віртуальне середовище**  
+2. **Create a virtual environment**
    ```bash
    python3.12 -m venv .venv
    ```
-   Linux/macOS
+   On Linux/macOS:
    ```bash
    source .venv/bin/activate
    ```
-   Windows
+   On Windows:
    ```bash
    .\.venv\Scripts\activate
    ```
-3. **Встановіть залежності**
+3. **Install dependencies**
    ```bash
    pip install --upgrade pip
    pip install aiogram Pillow python-dotenv alerts-in-ua
    ```
-4. **Налаштування змінних оточення**
-   Створіть файл .env у корені проєкту з такими параметрами:
+4. **Configure environment variables**
+   Create a file named `.env` in the project root with the following contents:
    ```bash
-   TELEGRAM_BOT_TOKEN=<ваш токен від BotFather>
-   ALERTS_IN_UA_TOKEN=<API-ключ для сервісу alerts_in_ua>
+   TELEGRAM_BOT_TOKEN=<your BotFather token>
+   ALERTS_IN_UA_TOKEN=<your alerts_in_ua API key>
    ```
-5. **Запуск бота**
+5. **Run the bot**
    ```bash
    python main.py
    ```
 
-## Додатково
+## Additionally
 
-- Щоб змінити інтервал оновлення тривог, відкоригуйте затримку в `alerts_event.py` (рядок з `asyncio.sleep(7)`).
-- Для кастомізації вигляду карти змініть шаблон `app/images/UK2.png` та папку масок `app/images/menus/*.png`.
-- Використовуйте logging для налагодження — рівень можна змінити в `main.py` через `logging.basicConfig(level=logging.DEBUG)`.
+- To adjust the alarms update interval, modify the `asyncio.sleep(7)` line in `app/handlers/alerts_event.py`.
+- To customize the map appearance, update the base image at `app/images/UK2.png` and the region masks in `app/images/menus/`.
+- Use Python’s logging module for debugging; change the level in `main.py` via `logging.basicConfig(level=logging.DEBUG)`.
 
+   
+   
