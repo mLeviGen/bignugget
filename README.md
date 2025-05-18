@@ -27,7 +27,13 @@
 2. **Створіть віртуальне середовище**  
    ```bash
    python3.12 -m venv .venv
-   source .venv/bin/activate      # Linux/macOS
-   .\.venv\Scripts\activate       # Windows
-  ```
+   ```
+   Linux/macOS
+   ```bash
+   source .venv/bin/activate
+   ```
+   Windows
+   ```bash
+   .\.venv\Scripts\activate
+   ```
 3. **Встановіть залежності**
