@@ -37,3 +37,24 @@
    .\.venv\Scripts\activate
    ```
 3. **Встановіть залежності**
+   ```bash
+   pip install --upgrade pip
+   pip install aiogram Pillow python-dotenv alerts-in-ua
+   ```
+4. **Налаштування змінних оточення**
+   Створіть файл .env у корені проєкту з такими параметрами:
+   ```bash
+   TELEGRAM_BOT_TOKEN=<ваш токен від BotFather>
+   ALERTS_IN_UA_TOKEN=<API-ключ для сервісу alerts_in_ua>
+   ```
+5. **Запуск бота**
+   ```bash
+   python main.py
+   ```
+
+## Додатково
+
+- Щоб змінити інтервал оновлення тривог, відкоригуйте затримку в `alerts_event.py` (рядок з `asyncio.sleep(7)`).
+- Для кастомізації вигляду карти змініть шаблон `app/images/UK2.png` та папку масок `app/images/menus/*.png`.
+- Використовуйте logging для налагодження — рівень можна змінити в `main.py` через `logging.basicConfig(level=logging.DEBUG)`.
+
